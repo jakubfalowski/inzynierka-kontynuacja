@@ -1,13 +1,17 @@
 "use client";
 import { Anchor, Badge, Button, Card, Grid, Group, Text } from "@mantine/core";
 import { useEffect } from "react";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 export function MainPage() {
   useEffect(() => {
     const TRACKING_ID = "G-B68VFH5CBV";
     ReactGA.initialize(TRACKING_ID);
-    ReactGA.pageview("/");
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pagename + window.location.search,
+      title: window.location.pagename + window.location.search,
+    });
   }, []);
 
   return (
